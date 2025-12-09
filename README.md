@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Job Portal — Frontend (Next.js + Tailwind CSS)
 
-## Getting Started
+This is the frontend for the Job Portal Application, built using Next.js (App Router) and styled with Tailwind CSS.
+Users can:
 
-First, run the development server:
+🔐 Register & Login
 
-```bash
+👀 View Jobs
+
+📥 Apply for Jobs with Resume Upload
+
+📄 View Their Applications
+
+🐞 (Dev Only) Debug Application Data
+
+Backend: FastAPI
+Database: PostgreSQL
+
+⚙️ Getting Started
+
+First, install dependencies:
+
+npm install
+# or
+yarn
+# or
+pnpm install
+
+
+Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# or: yarn dev / pnpm dev / bun dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open your browser and visit:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+👉 http://localhost:3000
 
-## Learn More
+The app will auto-refresh as you edit files.
 
-To learn more about Next.js, take a look at the following resources:
+📁 Project Structure
+src/app/
+ ├── page.tsx                  → Home
+ ├── jobs/                     → Jobs List
+ ├── apply/[job_id]/page.tsx  → Apply Page
+ ├── applications/page.tsx     → My Applications
+ ├── applications/debug/       → Debug view (dev)
+ ├── login/page.tsx            → Login
+ ├── register/page.tsx         → Register
+ └── layout.tsx                → Global Layout + Navbar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔗 Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create .env.local:
 
-## Deploy on Vercel
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Make sure your FastAPI backend is running on the same URL.
+
+🧪 API Endpoints Used
+Authentication
+POST /api/auth/register
+POST /api/auth/token
+
+Jobs
+GET /api/jobs
+
+Applications
+POST /api/applications/apply/{job_id}
+GET  /api/applications/my
+GET  /api/applications/debug     ← Dev only
+
+🎨 Tech Stack
+
+Next.js 14 (App Router)
+
+React
+
+Tailwind CSS
+
+FastAPI Backend
+
+PostgreSQL
+
+JWT Authentication
+
+🧑‍💻 Development Notes
+
+app/layout.tsx contains the global layout + navbar.
+
+app/apply/[job_id]/page.tsx handles applying for a job.
+
+File uploads must use FormData.
+
+Token is stored in localStorage.
+
+🚀 Deploy on Vercel
+
+Deploy easily using:
+
+👉 https://vercel.com/new
+
+Or follow the official docs:
+
+https://nextjs.org/docs/app/building-your-application/deploying
+
+🤝 Contributing
+
+Fork the repo
+
+Create a branch
+
+Commit changes
+
+Open a Pull Request
